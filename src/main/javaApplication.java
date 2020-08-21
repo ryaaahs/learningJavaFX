@@ -2,7 +2,11 @@ import javafx.application.Application;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -69,8 +73,8 @@ public class javaApplication extends Application {
         stage.toFront();
         */
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    @Override
-    public void start(Stage stage) throws Exception {
+    //@Override
+    /*public void start(Stage stage) throws Exception {
         stage.setTitle("Window");
         stage.setHeight(500);
         stage.setWidth(500);
@@ -86,6 +90,46 @@ public class javaApplication extends Application {
         scene1.setCursor(Cursor.CROSSHAIR);
         stage.setScene(scene1);
 
+        stage.show();
+     }
+     */
+
+    //Playing around with different child nodes for the layout manager
+    @Override
+    public void start(Stage stage) throws Exception {
+        stage.setTitle("Window");
+        stage.setWidth(500);
+        stage.setHeight(500);
+
+        VBox root = new VBox();
+        Scene scene = new Scene(root);
+
+        //Label labelOne = new Label("This is a text label");
+
+        Image cat = new Image("/images/cool-cat.png");
+        Image catTwo = new Image("/images/cool-cat-two.jpg");
+
+        ImageView imageOne = new ImageView();
+        imageOne.setFitHeight(200);
+        imageOne.setFitWidth(200);
+
+        ImageView imageTwo = new ImageView();
+        imageTwo.setFitHeight(200);
+        imageTwo.setFitWidth(200);
+
+        imageOne.setImage(cat);
+        imageTwo.setImage(catTwo);
+
+        Label labelOne = new Label("This is a text label", imageOne);
+        Label labelTwo = new Label("This is a cat!", imageTwo);
+        labelOne.setTextFill(Color.web("#eb9e34"));
+        labelTwo.setFont(new Font("Cambria", 35));
+        labelTwo.setRotate(45);
+
+        root.getChildren().addAll(labelTwo, labelOne);
+
+
+        stage.setScene(scene);
         stage.show();
     }
 }
