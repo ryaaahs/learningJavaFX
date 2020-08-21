@@ -1,4 +1,8 @@
 import javafx.application.Application;
+import javafx.scene.Cursor;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -25,6 +29,7 @@ public class javaApplication extends Application {
     }
     */
 
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     /*@Override
     public void start(Stage stage) throws Exception {
         Stage stage2 = new Stage();
@@ -63,10 +68,24 @@ public class javaApplication extends Application {
 
         stage.toFront();
         */
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    @Override
+    public void start(Stage stage) throws Exception {
+        stage.setTitle("Window");
+        stage.setHeight(500);
+        stage.setWidth(500);
 
-        @Override
-        public void start(Stage stage) throws Exception {
-            
-        }
+        VBox root = new VBox(); //parent node
+        Scene scene1 = new Scene(root);
+        Label label1 = new Label("This is a new label"); //child node in the chain
+        Label label2 = new Label("And another label");
+        //Labels
+        //Buttons
+        //Pictures
+        root.getChildren().addAll(label1, label2);
+        scene1.setCursor(Cursor.CROSSHAIR);
+        stage.setScene(scene1);
+
+        stage.show();
     }
 }
