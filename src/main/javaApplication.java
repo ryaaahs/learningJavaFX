@@ -1,6 +1,7 @@
 import javafx.application.Application;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -94,7 +95,9 @@ public class javaApplication extends Application {
      }
      */
 
+    //----------------------------------------------------------------
     //Playing around with different child nodes for the layout manager
+    /*
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("Window");
@@ -128,6 +131,36 @@ public class javaApplication extends Application {
 
         root.getChildren().addAll(labelTwo, labelOne);
 
+
+        stage.setScene(scene);
+        stage.show();
+     }
+     */
+    //----------------------------------------------------------------
+
+    // Learned about hyperlinks and lamda expressions
+    @Override
+    public void start(Stage stage) throws Exception {
+        stage.setTitle("Catculation");
+        stage.setWidth(500);
+        stage.setHeight(500);
+
+        /*Hyperlink link = new Hyperlink("Click this link");
+        link.setOnAction(event -> {
+            System.out.println("link has been click");
+        });*/
+
+        Label text = new Label("Line not touched");
+        ImageView image = new ImageView("https://i.imgur.com/5bcut7t.jpg");
+        Hyperlink link = new Hyperlink("touch this", image);
+
+        link.setOnAction(actionEvent -> {
+            text.setText("line has been smacked");
+        });
+
+        VBox root = new VBox();
+        Scene scene = new Scene(root);
+        root.getChildren().addAll(text, link);
 
         stage.setScene(scene);
         stage.show();
